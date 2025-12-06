@@ -4,7 +4,6 @@
   "description": "Welcome to the **UI UX Design System** repository. This repository provides a collection of useful HTML / CSS / JavaScript / TypeScript libraries for various applications.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:i18n-json": "node web/i18n/json/build.mjs"
   },
   "repository": {
