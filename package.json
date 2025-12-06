@@ -1,0 +1,25 @@
+{
+  "name": "ui_ux_design_system",
+  "version": "1.0.0",
+  "description": "Welcome to the **UI UX Design System** repository. This repository provides a collection of useful HTML / CSS / JavaScript / TypeScript libraries for various applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:i18n-json": "node web/i18n/json/build.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/k4k3ru-hub/ui-ux-design-system/issues"
+  },
+  "homepage": "https://github.com/k4k3ru-hub/ui-ux-design-system#readme",
+  "devDependencies": {
+    "esbuild": "^0.27.1"
+  }
+}

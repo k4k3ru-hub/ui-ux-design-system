@@ -1,0 +1,127 @@
+{
+    "country": {
+        "italy": "イタリア",
+        "germany": "ドイツ",
+        "japan": "日本",
+        "korean": "韓国",
+        "spain": "スペイン",
+        "united_kingdom": "イギリス",
+        "united_states": "アメリカ合衆国"
+    },
+    "currency": { 
+        "eur": "ユーロ",
+        "jpy": "円",
+        "usd": "USドル"
+    },
+    "dictionary": {
+        "act_on_specified_commercial_transactions": "特定商取引法上の表記",
+        "all": "すべて",
+        "category": "カテゴリ",
+        "company_overview": "会社概要",
+        "close": "閉じる",
+        "confirm":"確認",
+        "confirm_password": "パスワード確認",
+        "contact": "お問い合せ",
+        "download": "ダウンロード",
+        "email": "メールアドレス",
+        "general": "一般",
+        "home": "ホーム",
+        "icon": "アイコン",
+        "import": "インポート",
+        "inquiry": "お問い合わせ",
+        "install": "インストール",
+        "keyword": "キーワード",
+        "keywords": "キーワード",
+        "login": "ログイン",
+        "menu": "メニュー",
+        "message": "メッセージ",
+        "more_detail": "もっと詳しく",
+        "new_articles": "新着記事",
+        "notification": "通知",
+        "operating_company": "運営会社",
+        "password": "パスワード",
+        "period": "期間",
+        "plan": "プラン",
+        "portfolio": "ポートフォリオ",
+        "privacy_policy": "プライバシーポリシー",
+        "related_articles": "関連記事",
+        "reset_password": "パスワードリセット",
+        "roadmap": "ロードマップ",
+        "search": "検索",
+        "see_more": "もっと見る",
+        "send": "送信",
+        "service": "サービス",
+        "terms_of_service": "利用規約",
+        "top": "トップ",
+        "username": "ユーザネーム"
+    },
+    "message": {
+        "confirmation": {
+            "are_you_sure_you_want_to_delete_this": "本当に削除しますか？",
+            "are_you_sure_you_want_to_xxxx": "本当にXXXXしますか？"
+        },
+        "error": {
+            "internal_server_error": "現在、システムメンテナンス中であるため一部のサービスを使用できない可能性があります。",
+            "invalid_request": "リクエストが無効です。",
+            "invalid_token": "トークンが無効です。",
+            "login_failed": "ログインに失敗しました。",
+            "page_not_found": "ページが見つかりませんでした。",
+            "password_reset_has_expired": "パスワードリセットの有効期限が切れました。再度リクエストしてください。",
+            "session_error": "セッションエラーが発生しました。再度ログインしてください。",
+            "the_specified_parameter_is_invalid": "指定されたパラメータが無効です。",
+            "token_has_expired": "トークンの有効期限が切れています",
+            "xxx_app_is_currently_unavailable": "xxxアプリは停止中です。"
+        },
+        "guide": {
+            "enter_your_new_password": "新しいパスワードを入力してください。",
+            "go_buck_to_top_page": "トップページへ戻る",
+            "please_wait_a_moment": "少々お待ちください。",
+            "re_enter_your_new_password_to_confirm": "新しいパスワードを再度入力してください。",
+            "we_have_sent_you_an_email_to_reset_your_password": "パスワードリセット用メールを送信しました。ご確認ください。"
+        },
+        "success": {
+            "added_new_article": "新しい記事を追加しました。",
+            "added_new_image": "新しいイメージを追加しました。",
+            "added_new_tag": "新しいタグを追加しました。",
+            "deleted_article": "記事を削除しました。",
+            "deleted_image": "イメージを削除しました。",
+            "deleted_tag": "タグを削除しました。",
+            "new_account_registration_has_been_completed": "新規アカウント登録が完了しました。",
+            "updated_article": "記事を更新しました。",
+            "updated_image": "イメージを更新しました。",
+            "updated_tag": "タグを更新しました。"
+        },
+        "validation": {
+            "email_is_invalid": "メールアドレスが不正です。",
+            "email_is_required": "メールアドレスを入力してください。",
+            "email_is_too_long": "メールアドレスが長すぎます。",
+            "message_is_required": "メッセージを入力してください。",
+            "password_is_invalid": "パスワードが不正です。",
+            "password_is_required": "パスワードを入力してください。",
+            "password_is_too_long": "パスワードが長すぎます。",
+            "passwords_do_not_match": "パスワードが一致しません。入力内容を確認してください。",
+            "keyword_is_required": "キーワードを入力してください。",
+            "keyword_is_too_long": "キーワードが長すぎます。",
+            "url_is_required": "URLを入力してください。",
+            "url_is_too_long": "URLが長すぎます。",
+            "username_is_required": "ユーザネームを入力してください。"
+        },
+        "warn": {
+            "article_was_not_found": "記事が見つかりませんでした。"
+        }
+    },
+    "unit": {
+        "hour": "時",
+        "liter": "リットル",
+        "meter": "メートル",
+        "minute": "分",
+        "people": "人",
+        "person": "人",
+        "second": "秒"
+    },
+    "view": {
+        "index": {
+            "title": "ホーム"
+        }
+    }
+}

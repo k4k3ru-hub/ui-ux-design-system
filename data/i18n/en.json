@@ -1,0 +1,126 @@
+{
+    "country": {
+        "italy": "Italy",
+        "germany": "Germany",
+        "japan": "Japan",
+        "korean": "Korea",
+        "spain": "Spain",
+        "united_kingdom": "United Kingdom",
+        "united_states": "United States"
+    },
+    "currency": { 
+        "eur": "EUR",
+        "jpy": "JPY",
+        "usd": "USD"
+    },
+    "dictionary": {
+        "act_on_specified_commercial_transactions": "Act on specified commercial transactions",
+        "all": "All",
+        "category": "Category",
+        "company_overview": "Company",
+        "close": "Close",
+        "confirm":"Confirm",
+        "confirm_password": "Confirm Password",
+        "contact": "Contact",
+        "download": "Download",
+        "email": "Email",
+        "general": "General",
+        "home": "Home",
+        "icon": "Icon",
+        "import": "Import",
+        "inquiry": "Inquiry",
+        "install": "Install",
+        "keyword": "Keyword",
+        "keywords": "Keywords",
+        "login": "Login",
+        "menu": "Menu",
+        "message": "Message",
+        "more_detail": "More detail",
+        "new_articles": "New articles",
+        "notification": "Notification",
+        "operating_company": "Operating company",
+        "password": "Password",
+        "period": "Period",
+        "plan": "Plan",
+        "portfolio": "Portfolio",
+        "privacy_policy": "Privacy policy",
+        "related_articles": "Related articles",
+        "reset_password": "Reset Password",
+        "search": "Search",
+        "see_more": "See more",
+        "send": "Send",
+        "service": "Service",
+        "terms_of_service": "Terms of service",
+        "top": "Top",
+        "username": "Username"
+    },
+    "message": {
+        "confirmation": {
+            "are_you_sure_you_want_to_delete_this": "Are you sure you want to delete this?",
+            "are_you_sure_you_want_to_xxxx": "Are you sure you want to XXXX?"
+        },
+        "error": {
+            "internal_server_error": "The system is currently under maintenance so some services might not be available.",
+            "invalid_request": "Invalid request.",
+            "invalid_token": "Invalid token.",
+            "login_failed": "Login failed.",
+            "page_not_found": "Page not found.",
+            "password_reset_has_expired": "Password reset has expired, please request again.",
+            "session_error": "Session error. Please sign in again.",
+            "the_specified_parameter_is_invalid": "The specified parameter is invalid.",
+            "token_has_expired": "Token has expired",
+            "xxx_app_is_currently_unavailable": "xxx app is currently unavailable."
+        },
+        "guide": {
+            "enter_your_new_password": "Enter your new password.",
+            "go_buck_to_top_page": "Go buck to top page.",
+            "please_wait_a_moment": "Please wait a moment.",
+            "re_enter_your_new_password_to_confirm": "Re-enter your new password to confirm.",
+            "we_have_sent_you_an_email_to_reset_your_password": "We've sent you an email to reset your password. Please check your inbox."
+        },
+        "success": {
+            "added_new_article": "Added new article.",
+            "added_new_image": "Added new image.",
+            "added_new_tag": "Added new tag.",
+            "deleted_article": "Deleted article.",
+            "deleted_image": "Deleted image.",
+            "deleted_tag": "Deleted tag.",
+            "new_account_registration_has_been_completed": "New account registration has been completed.",
+            "updated_article": "Updated article.",
+            "updated_image": "Updated image.",
+            "updated_tag": "Updated tag."
+        },
+        "validation": {
+            "email_is_invalid": "Email is invalid.",
+            "email_is_required": "Email is required.",
+            "email_is_too_long": "Email is too long.",
+            "message_is_required": "Message is required.",
+            "password_is_invalid": "Password is invalid.",
+            "password_is_required": "Password is required.",
+            "password_is_too_long": "Password is too long.",
+            "passwords_do_not_match": "The passwords do not match. Please check and try again.",
+            "keyword_is_required": "Keyword is required.",
+            "keyword_is_too_long": "Keyword is too long.",
+            "url_is_required": "URL is required.",
+            "url_is_too_long": "URL is too long",
+            "username_is_required": "Username is required."
+        },
+        "warn": {
+            "article_was_not_found": "Article was not found."
+        }
+    },
+    "unit": {
+        "hour": "hour",
+        "liter": "liter",
+        "meter": "meter",
+        "minute": "minute",
+        "people": "people",
+        "person": "person",
+        "second": "second"
+    },
+    "view": {
+        "index": {
+            "title": "Home"
+        }
+    }
+}
