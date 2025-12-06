@@ -1,0 +1,22 @@
+{
+  "name": "@k4k3ru/toaster",
+  "version": "1.0.1",
+  "description": "Utility for toaster notification",
+  "license": "MIT",
+  "author": "k4k3ru",
+  "type": "module",
+  "files": ["dist"],
+  "main": "dist/script.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
+    "directory": "web/toaster"
+  }
+}
