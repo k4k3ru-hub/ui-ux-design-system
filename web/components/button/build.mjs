@@ -15,7 +15,7 @@ await build({
     format: "esm",
     sourcemap: true,
 }).then(() => {
-    console.log(`built JS successfully: package=@k4k3ru/toaster`);
+    console.log(`built JS successfully: file=script.js package=@k4k3ru/components-button`);
 });
 await build({
     entryPoints: [path.join(pkgRoot, "script.js")],
@@ -26,7 +26,7 @@ await build({
     format: "esm",
     sourcemap: true,
 }).then(() => {
-    console.log(`built minified JS successfully: package=@k4k3ru/toaster`);
+    console.log(`built minified JS successfully: file=script.js package=@k4k3ru/components-button`);
 });
 await build({
     entryPoints: [path.join(pkgRoot, "style.css")],
@@ -35,7 +35,7 @@ await build({
     platform: "browser",
     sourcemap: true,
 }).then(() => {
-    console.log(`built CSS successfully: package=@k4k3ru/toaster`);
+    console.log(`built CSS successfully: file=style.css package=@k4k3ru/components-button`);
 });
 await build({
     entryPoints: [path.join(pkgRoot, "style.css")],
@@ -45,5 +45,5 @@ await build({
     platform: "browser",
     sourcemap: true,
 }).then(() => {
-    console.log(`built minified CSS successfully: package=@k4k3ru/toaster`);
+    console.log(`built minified CSS successfully: file=style.css package=@k4k3ru/components-button`);
 });

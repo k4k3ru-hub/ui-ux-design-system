@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../layout.css"],
+  "sourcesContent": ["@charset \"UTF-8\";\n\n:root {\n    --layout-color-on-surface: #1a1b1e;\n    --layout-color-surface: #faf9fd;\n}\n@media (prefers-color-scheme: dark) {\n    :root {\n        --layout-color-on-surface: #e3e2e6;\n        --layout-color-surface: #121316;\n    }\n}\nhtml[data-theme=\"light\"] {\n    --layout-color-on-surface: #1a1b1e;\n    --layout-color-surface: #faf9fd;\n}\nhtml[data-theme=\"dark\"] {\n    --layout-color-on-surface: #e3e2e6;\n    --layout-color-surface: #121316;\n}\n\n\n.layout {\n    background-color: var(--layout-color-surface);\n    box-sizing: border-box;\n    color: var(--layout-color-on-surface);\n    display: flex;\n    flex-direction: column;\n    height: 100vh;\n    margin: 0;\n    padding: 0;\n    width: 100vw;\n}\n@media screen and (min-width: 600px) {\n    .layout {\n        flex-direction: row;\n    }\n}\n"],
+  "mappings": ";;;AAEA;AACI,6BAA2B;AAC3B,0BAAwB;AAC5B;AACA,QAAO,sBAAuB;AAC1B;AACI,+BAA2B;AAC3B,4BAAwB;AAC5B;AACJ;AACA,IAAI,CAAC;AACD,6BAA2B;AAC3B,0BAAwB;AAC5B;AACA,IAAI,CAAC;AACD,6BAA2B;AAC3B,0BAAwB;AAC5B;AAGA,CAAC;AACG,oBAAkB,IAAI;AACtB,cAAY;AACZ,SAAO,IAAI;AACX,WAAS;AACT,kBAAgB;AAChB,UAAQ;AACR,UAAQ;AACR,WAAS;AACT,SAAO;AACX;AACA,OAAO,YAAW,WAAY;AAC1B,GAZH;AAaO,oBAAgB;AACpB;AACJ;",
+  "names": []
+}

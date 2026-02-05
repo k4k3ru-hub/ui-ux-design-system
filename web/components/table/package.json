@@ -1,7 +1,7 @@
 {
-  "name": "@k4k3ru/toaster",
-  "version": "1.0.3",
-  "description": "Utility for toaster notification",
+  "name": "@k4k3ru/components-table",
+  "version": "1.0.0",
+  "description": "Utility for table component",
   "license": "MIT",
   "author": "k4k3ru",
   "type": "module",
@@ -17,6 +17,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
-    "directory": "web/toaster"
+    "directory": "web/components/table"
   }
 }

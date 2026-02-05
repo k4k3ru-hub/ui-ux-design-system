@@ -1,7 +1,7 @@
 {
-  "name": "@k4k3ru/toaster",
+  "name": "@k4k3ru/layouts",
   "version": "1.0.3",
-  "description": "Utility for toaster notification",
+  "description": "Utility for layouts",
   "license": "MIT",
   "author": "k4k3ru",
   "type": "module",
@@ -17,6 +17,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
-    "directory": "web/toaster"
+    "directory": "web/layouts"
   }
 }

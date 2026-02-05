@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+:root {
+    --layout-color-on-surface: #1a1b1e;
+    --layout-color-surface: #faf9fd;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --layout-color-on-surface: #e3e2e6;
+        --layout-color-surface: #121316;
+    }
+}
+html[data-theme="light"] {
+    --layout-color-on-surface: #1a1b1e;
+    --layout-color-surface: #faf9fd;
+}
+html[data-theme="dark"] {
+    --layout-color-on-surface: #e3e2e6;
+    --layout-color-surface: #121316;
+}
+
+
+.layout {
+    background-color: var(--layout-color-surface);
+    box-sizing: border-box;
+    color: var(--layout-color-on-surface);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+}
+@media screen and (min-width: 600px) {
+    .layout {
+        flex-direction: row;
+    }
+}

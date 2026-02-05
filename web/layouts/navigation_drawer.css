@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+/*
+ * Navigation drawer
+ *
+ * Exmaple:
+ * <div class="layout">
+ *   ...
+ *   <div class="layout__navigation-drawer">
+ *     <nav class="layout__navigation-drawer-container">
+ *       <ul class="layout__navigation-drawer-list">
+ *         <li>
+ *           <p class="layout__navigation-drawer-title">TITLE</p>
+ *           <ul class="layout__navigation-drawer-list">
+ *             <li>
+ *               <a class="layout__navigation-drawer-item" href="">
+ *                 <svg class="layout__navigation-drawer-icon"><use href="/img/splite.svg#add"></svg>
+ *                 <label class="layout__navigation-drawer-label">LABEL</label>
+ *               </a>
+ *             </li>
+ *           </ul>
+ *         </li>
+ *       </ul>
+ *     </nav>
+ *   </div>
+ *   ...
+ * </div>
+ */
+
+@import '../../shared/root.css';
+
+:root {
+    --layout-navigation-drawer-background-color: #f4f3f7;
+    --layout-navigation-drawer-border-color: #e3e2e6;
+    --layout-navigation-drawer-color: #181c22;
+    --layout-navigation-drawer-item-background-color: #e9e7ec;
+    --layout-navigation-drawer-item-background-color-active: #e3e2e6;
+    --layout-navigation-drawer-item-background-color-activated: #dae2f9;
+    --layout-navigation-drawer-transition-hover: var(--transition-hover)
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --layout-navigation-drawer-background-color: #1a1b1e;
+        --layout-navigation-drawer-border-color: #343538;
+        --layout-navigation-drawer-color: #e0e2ec;
+        --layout-navigation-drawer-item-background-color: #292a2d;
+        --layout-navigation-drawer-item-background-color-active: #343538;
+        --layout-navigation-drawer-item-background-color-activated: #3e4759;
+    }
+}
+html[data-theme="light"] {
+    --layout-navigation-drawer-background-color: #f4f3f7;
+    --layout-navigation-drawer-border-color: #e3e2e6;
+    --layout-navigation-drawer-color: #181c22;
+    --layout-navigation-drawer-item-background-color: #e9e7ec;
+    --layout-navigation-drawer-item-background-color-active: #e3e2e6;
+    --layout-navigation-drawer-item-background-color-activated: #dae2f9;
+}
+html[data-theme="dark"] {
+    --layout-navigation-drawer-background-color: #1a1b1e;
+    --layout-navigation-drawer-border-color: #343538;
+    --layout-navigation-drawer-color: #e0e2ec;
+    --layout-navigation-drawer-item-background-color: #292a2d;
+    --layout-navigation-drawer-item-background-color-active: #343538;
+    --layout-navigation-drawer-item-background-color-activated: #3e4759;
+}
+
+
+.layout__navigation-drawer {
+    background-color: rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: block;
+    height: 100vh;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+    width: 100vw;
+    z-index: 10;
+}
+.layout__navigation-drawer.activated {
+    opacity: 1;
+    transition: 0.25s all cubic-bezier(0.3, 0, 1, 1);
+    visibility: visible;
+}
+.layout__navigation-drawer-container {
+    background-color: var(--layout-navigation-drawer-background-color);
+    border-radius: 0 1rem 1rem 0;
+    box-shadow: 0px 1px 3px 0px rgb(0 0 0 / 30%), 0px 4px 8px 3px rgb(0 0 0 / 15%);
+    box-sizing: border-box;
+    color: var(--layout-navigation-drawer-color);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    left: 0;
+    margin: 0;
+    overflow-y: auto;
+    padding: 0;
+    position: fixed;
+    transition: 0.5s all cubic-bezier(0.2, 0.0, 0, 1.0);
+    width: 0;
+    z-index: 10;
+}
+.layout__navigation-drawer.activated > .layout__navigation-drawer-container {
+    width: 22.5rem;
+}
+.layout__navigation-drawer-sub-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+    z-index: 10;
+}
+.layout__navigation-drawer-sub-container + .layout__navigation-drawer-sub-container {
+    border-top: 1px solid var(--layout-navigation-drawer-border-color);
+}
+.layout__navigation-drawer-list {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+.layout__navigation-drawer-title {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: bold;
+    justify-content: space-between;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 0.75rem 0;
+}
+.layout__navigation-drawer-item {
+    align-items: center;
+    border-radius: 2rem;
+    box-sizing: border-box;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    fill: inherit;
+    gap: 0.75rem;
+    height: 3.5rem;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+.layout__navigation-drawer-item::before {
+    background-color: var(--layout-navigation-drawer-item-background-color);
+    border-radius: 2rem;
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: scale(0);
+    width: 100%;
+    z-index: 1;
+}
+.layout__navigation-drawer-item:hover::before {
+    transform: scale(1);
+    transition: var(--layout-navigation-drawer-transition-hover);
+}
+.layout__navigation-drawer-item:active::before {
+    background-color: var(--layout-navigation-drawer-item-background-color-active);
+}
+.layout__navigation-drawer-item.activated::before {
+    background-color: var(--layout-navigation-drawer-item-background-color-activated);
+    transform: scale(1);
+}
+.layout__navigation-drawer-icon {
+    display: block;
+    flex-shrink: 0;
+    height: 1.5rem;
+    position: relative;
+    width: 1.5rem;
+    z-index: 2;
+}
+.layout__navigation-drawer-label {
+    flex: 1 1 auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+}
+.layout__navigation-drawer-sub-label {
+    flex: 0 1 auto;
+    font-size: 0.75rem;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
