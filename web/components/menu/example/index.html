@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="k4k3ru" />
+
+    <link href="../../../tokens/style.css" type="text/css" rel="stylesheet" />
+    <link href="../style.css" type="text/css" rel="stylesheet" />
+
+    <!-
+      Note: If you open this via file access, you need to comment out to `export { Menu }` in script.js.
+    ->
+    <script src="../script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          new Menu().Run();
+      });
+    </script>
+
+  </head>
+  <body>
+    <h1>Menu</h1>
+    <section>
+      <h2>General</h2>
+      <div class="menu__selected-box menu__selected-box--outlined" data-menu-target="1">
+        <span class="menu__selected-icon" data-menu-sync="icon"></span>
+        <span class="menu__selected-label" data-menu-sync="label">SELECTED_MENU_ITEM</span>
+        <svg class="menu__selected-toggle-icon" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>
+      </div>
+    </section>
+    <section>
+      <h2>Hierarchical</h2>
+      <div class="menu__selected-box menu__selected-box--outlined" data-menu-target="2">
+        <span class="menu__selected-icon" data-menu-sync="icon"></span>
+        <span class="menu__selected-label" data-menu-sync="label">SELECTED_MENU_ITEM</span>
+        <svg class="menu__selected-toggle-icon" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>
+      </div>
+    </section>
+    <section>
+      <h2>Smaller</h2>
+      <div class="menu__selected-box menu__selected-box--outlined menu__selected-box--smaller" data-menu-target="5">
+        <span class="menu__selected-icon" data-menu-sync="icon"></span>
+        <span class="menu__selected-label" data-menu-sync="label">SELECTED_MENU_ITEM</span>
+        <svg class="menu__selected-toggle-icon" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>
+      </div>
+    </section>
+    <section>
+      <h2>Search filter</h2>
+      <div class="menu__selected-box menu__selected-box--outlined menu__selected-box--smaller" data-menu-target="search-filter-menu">
+        <span class="menu__selected-icon" data-menu-sync="icon"></span>
+        <span class="menu__selected-label" data-menu-sync="label">SELECTED_MENU_ITEM</span>
+        <svg class="menu__selected-toggle-icon" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>
+      </div>
+    </section>
+    <section>
+      <h2>Multiple Select Mode</h2>
+      <div class="menu__selected-box menu__selected-box--outlined menu__selected-box--smaller" data-menu-target="multiple-select-menu" data-menu-initial-values="2">
+        <span class="menu__selected-label" data-menu-sync="label">SELECTED_MENU_ITEM</span>
+        <svg class="menu__selected-toggle-icon" viewBox="0 -960 960 960"><path d="M480-360 280-560h400L480-360Z"/></svg>
+      </div>
+    </section>
+
+    <div class="menu__container" data-menu-id="1" role="listbox">
+      <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+        <span class="menu__item-icon"><svg viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg></span>
+        <span class="menu__item-label">MENU_ITEM_1</span>
+        <div class="menu__item-trail-box">
+          <span class="menu__item-sub-label">sub_label</span>
+        </div>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+        <svg class="menu__item-icon"></svg>
+        <span class="menu__item-label">MENU_ITEM_2</span>
+        <div class="menu__item-trail-box">
+          <span class="menu__item-sub-label">sub_label</span>
+        </div>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+        <svg class="menu__item-icon"></svg>
+        <span class="menu__item-label">MENU_ITEM_3</span>
+        <div class="menu__item-trail-box">
+          <span class="menu__item-sub-label">sub_label</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu__container" data-menu-id="2" role="listbox">
+      <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+        <span class="menu__item-label">MENU_ITEM_1</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="2" data-menu-target="3" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_2</span>
+        <span class="menu__item-icon"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg></span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_3</span>
+      </div>
+    </div>
+
+    <div class="menu__container" data-menu-id="3" role="listbox">
+      <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+        <span class="menu__item-label">MENU_ITEM_2_1</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_2_2</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="3" data-menu-target="4" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_2_3</span>
+        <span class="menu__item-icon"><svg class="menu__item-icon" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg></span>
+      </div>
+    </div>
+
+    <div class="menu__container" data-menu-id="4" role="listbox">
+      <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+        <span class="menu__item-label">MENU_ITEM_3_1</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_3_2</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_3_3</span>
+      </div>
+    </div>
+
+    <div class="menu__container menu__container--smaller" data-menu-id="5" role="listbox">
+      <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+        <span class="menu__item-label">MENU_ITEM_1</span>
+        <div class="menu__item-trail-box">
+          <span class="menu__item-icon"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg></span>
+        </div>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_2</span>
+      </div>
+      <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+        <span class="menu__item-label">MENU_ITEM_3</span>
+      </div>
+    </div>
+
+    <div class="menu__container menu__container--smaller" data-menu-id="search-filter-menu">
+      <form class="menu__search-filter">
+        <div class="menu__search-filter-field">
+          <svg class="menu__search-filter-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 4a6 6 0 1 0 3.874 10.582l4.272 4.272 1.414-1.414-4.272-4.272A6 6 0 0 0 10 4Zm0 2a4 4 0 1 1 0 8a4 4 0 0 1 0-8Z"/>
+          </svg>
+          <div class="menu__search-filter-control">
+            <input
+              id="search-filter-menu-input"
+              class="menu__search-filter-input"
+              type="text"
+              name="search"
+              autocomplete="off"
+              spellcheck="false">
+            <span aria-label="メニューを検索" class="menu__search-filter-label">Search menu</span>
+          </div>
+        </div>
+        <p class="menu__search-filter-empty-label">該当する項目が見つかりませんでした。</p>
+      </form>
+      <div class="menu__list" role="listbox">
+        <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+          <span class="menu__item-label">MENU_ITEM_1</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_2</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_3</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="4" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_4</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="5" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_5</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="6" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_6</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="7" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_7</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="8" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_8</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="9" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_9</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="10" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_10</span>
+        </div>
+      </div>
+      <div class="menu__list" role="listbox">
+        <div aria-selected="true" class="menu__item" data-menu-item-value="1" role="option" tabindex="0">
+          <span class="menu__item-label">MENU_ITEM_1</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_2</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_3</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="4" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_4</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="5" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_5</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="6" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_6</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="7" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_7</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="8" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_8</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="9" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_9</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="10" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu__container menu__container--smaller" data-menu-select-mode="multiple" data-menu-id="multiple-select-menu">
+      <form class="menu__search-filter">
+        <div class="menu__search-filter-field">
+          <svg class="menu__search-filter-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10 4a6 6 0 1 0 3.874 10.582l4.272 4.272 1.414-1.414-4.272-4.272A6 6 0 0 0 10 4Zm0 2a4 4 0 1 1 0 8a4 4 0 0 1 0-8Z"/>
+          </svg>
+          <div class="menu__search-filter-control">
+            <input
+              id="search-filter-menu-input"
+              class="menu__search-filter-input"
+              type="text"
+              name="search"
+              autocomplete="off"
+              spellcheck="false">
+            <span aria-label="メニューを検索" class="menu__search-filter-label">Search menu</span>
+          </div>
+        </div>
+        <p class="menu__search-filter-empty-label">該当する項目が見つかりませんでした。</p>
+      </form>
+      <div class="menu__list" role="listbox">
+        <div aria-selected="false" class="menu__item" data-menu-item-value="1" role="option" tabindex="-1">
+          <svg class="menu__item-icon menu__item-icon--selected-only" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+          <span class="menu__item-label">MENU_ITEM_1</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="2" role="option" tabindex="-1">
+          <svg class="menu__item-icon menu__item-icon--selected-only" viewBox="0 -960 960 960"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+          <span class="menu__item-label">MENU_ITEM_2</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="3" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_3</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="4" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_4</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="5" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_5</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="6" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_6</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="7" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_7</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="8" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_8</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="9" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_9</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="10" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_10</span>
+        </div>
+      </div>
+      <div class="menu__list" role="listbox">
+        <div aria-selected="true" class="menu__item" data-menu-item-value="11" role="option" tabindex="0">
+          <span class="menu__item-label">MENU_ITEM_1</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="12" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_2</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="13" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_3</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="14" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_4</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="15" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_5</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="16" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_6</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="17" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_7</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="18" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_8</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="19" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_9</span>
+        </div>
+        <div aria-selected="false" class="menu__item" data-menu-item-value="20" role="option" tabindex="-1">
+          <span class="menu__item-label">MENU_ITEM_10</span>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</htl>

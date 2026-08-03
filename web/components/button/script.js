@@ -8,16 +8,18 @@
 //
 class Button {
 
-    static #DefaultButtonClass = 'button';
-    static #initialized = new WeakSet();
+    static #defaultButtonClass = 'button';
+
+    #options = {};
+    #didBindOnDocument = false;
 
     //
     // Constructor.
     //
     constructor(options = null) {
         // Options
-        this.options = {
-            class: Button.#DefaultButtonClass,
+        this.#options = {
+            class: Button.#defaultButtonClass,
             ...options,
         };
     }
@@ -27,61 +29,49 @@ class Button {
     // Run.
     //
     Run() {
-        const buttons = document.querySelectorAll(`.${this.options.class}`);
+        if (this.#didBindOnDocument) return;
+        this.#didBindOnDocument = true;
 
-        for (let i = 0; i < buttons.length; i++) {
-            const btn = buttons[i];
-
-            if (Button.#initialized.has(btn)) {
-                continue;
-            }
-            Button.#initialized.add(btn);
-
-            const style = window.getComputedStyle(btn);
-            if (style.position === 'static') {
-                btn.style.position = 'relative';
-            }
-            if (style.overflow === 'visible') {
-                btn.style.overflow = 'hidden';
-            }
-
-            btn.addEventListener('click', this.#onClick);
-        }
+        // Add pointerdown event listener on document.
+        document.addEventListener('pointerdown', (event) => { this.#handleButtonClick(event) });
     }
 
 
-    //
-    // Click event on the button.
-    //
-    #onClick(event) {
-        const btn = event.currentTarget;
-        if (!btn) {
-            return;
-        }
+    #handleButtonClick(event) {
+        const btn = event?.target.closest?.(`.${this.#options.class}`) ?? null;
+        if (!btn) return;
 
+        this.#spawnRipple(event, btn);
+    }
+
+
+    #spawnRipple(event, btn) {
         const rect = btn.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+    
+        // Get the click position.
+        const x = (event.clientX ?? (rect.left + rect.width / 2)) - rect.left;
+        const y = (event.clientY ?? (rect.top + rect.height / 2)) - rect.top;
+
         const size = Math.max(rect.width, rect.height) * 2;
-
+        const d = Math.hypot(rect.width, rect.height);
+        
         const ripple = document.createElement('span');
-        ripple.classList.add('button__ripple');
-        ripple.style.width = `${size}px`;
-        ripple.style.height = `${size}px`;
-        ripple.style.left = `${x - size / 2}px`;
-        ripple.style.top = `${y - size / 2}px`;
-
-        btn.appendChild(ripple);
+        ripple.className = 'button__ripple';
+        btn.prepend(ripple);
+            
+        ripple.style.setProperty('--ripple-x', `${x}px`);
+        ripple.style.setProperty('--ripple-y', `${y}px`);
+        ripple.style.setProperty('--ripple-size', `${size}px`);
+                
+        ripple.addEventListener('animationend', () => {
+            ripple.remove();
+        }, { once: true });
 
         requestAnimationFrame(() => {
             ripple.classList.add('button__ripple--animating');
-        });
-
-        ripple.addEventListener('transitionend', () => {
-            ripple.remove();
         });
     }
 
 }
 
-export { Button }
+//export { Button }

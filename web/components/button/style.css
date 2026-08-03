@@ -1,21 +1,9 @@
 @charset "UTF-8";
 
 :root {
-    --button-color-error-overlay-hover: var(--color-error-overlay-hover);
-    --button-color-error-overlay-active: var(--color-error-overlay-active);
-    --button-color-error-overlay-disabled: var(--color-error-overlay-disabled);
-    --button-color-info-overlay-hover: var(--color-info-overlay-hover);
-    --button-color-info-overlay-active: var(--color-info-overlay-active);
-    --button-color-info-overlay-disabled: var(--color-info-overlay-disabled);
-    --button-color-success-overlay-hover: var(--color-success-overlay-hover);
-    --button-color-success-overlay-active: var(--color-success-overlay-active);
-    --button-color-success-overlay-disabled: var(--color-success-overlay-disabled);
-    --button-color-warning-overlay-hover: var(--color-warning-overlay-hover);
-    --button-color-warning-overlay-active: var(--color-warning-overlay-active);
-    --button-color-warning-overlay-disabled: var(--color-warning-overlay-disabled);
-    --button-filled-color-opacity-overlay-hover: var(--color-opacity-overlay-hover);
-    --button-filled-color-opacity-overlay-active: var(--color-opacity-overlay-active);
-    --button-filled-color-opacity-overlay-disabled: var(--color-opacity-overlay-disabled);
+    --button-background: var(--color-surface-container);
+    --button-color: var(--color-on-surface);
+    --button-color-active: var(--color-on-surface);
 
     --button-color-error: var(--color-error);
     --button-color-on-error: var(--color-on-error);
@@ -49,39 +37,65 @@
 
 .button {
     align-items: center;
+    background: var(--button-background);
     border: none;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-flex;
+    fill: var(--button-color);
     flex-shrink: 0;
-    font-size: var(--button-medium-font-size);
-    gap: 0.5rem;
+    gap: 0.25rem;
     height: 2.5rem;
     justify-content: center;
-    line-height: var(--button-medium-line-height);
     overflow: hidden;
     padding: 0 1rem;
     position: relative;
     transition: background-color var(--motion-standard) var(--easing-standard);
 }
-.button::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background-color: transparent;
+.button--disabled {
+    cursor: default;
+    opacity: 0.6;
     pointer-events: none;
-    transition: background-color var(--motion-standard) var(--easing-standard);
+}
+.button::before {
+    background: var(--button-color-active);
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity var(--motion-standard) var(--easing-standard);
+}
+.button:hover::before {
+    opacity: 0.08;
+}
+.button:active::before {
+    opacity: 0.12;
+}
+.button:disabled::before {
+    opacity: 0.32;
 }
 
 .button--larger {
-    font-size: var(--button-large-font-size);
-    line-height: var(--button-large-line-height);
+    height: 3rem;
+    gap: 0.5rem;
+    padding: 0 1.25rem;
 }
 
 .button--smaller {
-    font-size: var(--button-small-font-size);
-    line-height: var(--button-small-line-height);
+    gap: 0.125rem;
+    height: 2rem;
+    padding: 0 0.75rem;
+}
+
+.button--outlined {
+    background: none !important;
+    border: 1px solid currentColor;
+}
+
+.button--text {
+    background: none !important;
 }
 
 .button--round {
@@ -89,141 +103,230 @@
 }
 
 .button--error {
-    background-color: var(--button-color-on-error);
+    background: var(--button-color-error);
+}
+.button--error::before {
+    background: var(--button-color-on-error);
+}
+.button--error .button__label {
+    color: var(--button-color-on-error);
+}
+.button--error .button__icon {
+    fill: var(--button-color-on-error);
+}
+.button--error.button--outlined {
+    border: 1px solid var(--button-color-error);
+}
+.button--error.button--outlined::before {
+    background: var(--button-color-error);
+}
+.button--error.button--outlined .button__label {
     color: var(--button-color-error);
+}
+.button--error.button--outlined .button__icon {
     fill: var(--button-color-error);
 }
-.button--error:hover::before {
-    background-color: var(--button-color-error-overlay-hover);
+.button--error.button--text::before {
+    background: var(--button-color-error);
 }
-.button--error:active::before {
-    background-color: var(--button-color-error-overlay-active);
+.button--error.button--text .button__label {
+    color: var(--button-color-error);
 }
-.button--error:disabled::before {
-    background-color: var(--button-color-error-overlay-disabled);
+.button--error.button--text .button__icon {
+    fill: var(--button-color-error);
 }
+
+
 .button--error.button--outlined {
     background-color: inherit;
     border: 1px solid var(--button-color-error);
 }
-.button--error.button--filled {
-    background-color: var(--button-color-error);
-    color: var(--button-color-on-error);
-    fill: var(--button-color-on-error);
-}
+
+
 
 .button--info {
-    background-color: var(--button-color-on-info);
-    color: var(--button-color-info);
-    fill: var(--button-color-info);
+    background: var(--button-color-info);
 }
-.button--info:hover::before {
-    background-color: var(--button-color-info-overlay-hover);
+.button--info::before {
+    background: var(--button-color-on-info);
 }
-.button--info:active::before {
-    background-color: var(--button-color-info-overlay-active);
+.button--info .button__label {
+    color: var(--button-color-on-info);
 }
-.button--info:disabled::before {
-    background-color: var(--button-color-info-overlay-disabled);
+.button--info .button__icon {
+    fill: var(--button-color-on-info);
 }
 .button--info.button--outlined {
-    background-color: inherit;
     border: 1px solid var(--button-color-info);
 }
-.button--info.button--filled {
-    background-color: var(--button-color-info);
-    color: var(--button-color-on-info);
-    fill: var(--button-color-on-info);
+.button--info.button--outlined::before {
+    background: var(--button-color-info);
+}
+.button--info.button--outlined .button__label {
+    color: var(--button-color-info);
+}
+.button--info.button--outlined .button__icon {
+    fill: var(--button-color-info);
+}
+.button--info.button--text::before {
+    background: var(--button-color-info);
+}
+.button--info.button--text .button__label {
+    color: var(--button-color-info);
+}
+.button--info.button--text .button__icon {
+    fill: var(--button-color-info);
 }
 
 .button--success {
-    background-color: var(--button-color-on-success);
+    background: var(--button-color-success);
+}
+.button--success::before {
+    background: var(--button-color-on-success);
+}
+.button--success .button__label {
+    color: var(--button-color-on-success);
+}
+.button--success .button__icon {
+    fill: var(--button-color-on-success);
+}
+.button--info.button--outlined {
+    border: 1px solid var(--button-color-info);
+}
+.button--success.button--outlined::before {
+    background: var(--button-color-success);
+}
+.button--success.button--outlined .button__label {
     color: var(--button-color-success);
+}
+.button--success.button--outlined .button__icon {
     fill: var(--button-color-success);
 }
-.button--success:hover::before {
-    background-color: var(--button-color-success-overlay-hover);
+.button--success.button--text::before {
+    background: var(--button-color-success);
 }
-.button--success:active::before {
-    background-color: var(--button-color-success-overlay-active);
+.button--success.button--text .button__label {
+    color: var(--button-color-success);
 }
-.button--success:disabled::before {
-    background-color: var(--button-color-success-overlay-disabled);
+.button--success.button--text .button__icon {
+    fill: var(--button-color-success);
 }
+
 .button--success.button--outlined {
     background-color: inherit;
     border: 1px solid var(--button-color-success);
 }
-.button--success.button--filled {
-    background-color: var(--button-color-success);
-    color: var(--button-color-on-success);
-    fill: var(--button-color-on-success);
-}
 
 .button--warning {
-    background-color: var(--button-color-on-warning);
+    background: var(--button-color-warning);
+}
+.button--warning::before {
+    background: var(--button-color-on-warning);
+}
+.button--warning .button__label {
+    color: var(--button-color-on-warning);
+}
+.button--warning .button__icon {
+    fill: var(--button-color-on-warning);
+}
+.button--warning.button--outlined {
+    border: 1px solid var(--button-color-warning);
+}
+.button--warning.button--outlined::before {
+    background: var(--button-color-warning);
+}
+.button--warning.button--outlined .button__label {
     color: var(--button-color-warning);
+}
+.button--warning.button--outlined .button__icon {
     fill: var(--button-color-warning);
 }
-.button--warning:hover::before {
-    background-color: var(--button-color-warning-overlay-hover);
+.button--warning.button--text::before {
+    background: var(--button-color-warning);
 }
-.button--warning:active::before {
-    background-color: var(--button-color-warning-overlay-active);
+.button--warning.button--text .button__label {
+    color: var(--button-color-warning);
 }
-.button--warning:disabled::before {
-    background-color: var(--button-color-warning-overlay-disabled);
+.button--warning.button--text .button__icon {
+    fill: var(--button-color-warning);
 }
 .button--warning.button--outlined {
     background-color: inherit;
     border: 1px solid var(--button-color-warning);
 }
-.button--warning.button--filled {
-    background-color: var(--button-color-warning);
-    color: var(--button-color-on-warning);
-    fill: var(--button-color-on-warning);
+
+
+/*
+ * Label
+ */
+.button__label {
+    color: var(--button-color);
+    font-size: var(--button-medium-font-size);
+    line-height: var(--button-medium-line-height);
+    position: relative;
+    z-index: 1;
+}
+.button--larger .button__label {
+    font-size: var(--button-large-font-size);
+    line-height: var(--button-large-line-height);
+}
+.button--smaller .button__label {
+    font-size: var(--button-small-font-size);
+    line-height: var(--button-small-line-height);
 }
 
-.button--filled:hover::before {
-    background-color: var(--button-filled-color-opacity-overlay-hover);
+
+/*
+ * Icon
+ */
+.button__icon {
+    display: block;
+    fill: currentColor;
+    flex: 0 0 1.25rem;
+    height: 1.25rem;
+    position: relative;
+    width: 1.25rem;
+    z-index: 1;
 }
-.button--filled:active::before {
-    background-color: var(--button-filled-color-opacity-overlay-active);
+.button--larger .button__icon {
+    flex-basis: 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
 }
-.button--filled:disabled::before {
-    background: var(--button-filled-color-opacity-overlay-disabled);
+.button--smaller .button__icon {
+    flex-basis: 1.125rem;
+    height: 1.125rem;
+    width: 1.125rem;
 }
 
+
+/*
+ * Ripple
+ */
 .button__ripple {
-    border-radius: 50%;
+    inset: 0;
+    overflow: hidden;
     pointer-events: none;
     position: absolute;
+    z-index: 0;
+}
+.button__ripple::before {
+    content: "";
+    position: absolute;
+    width: var(--ripple-size, 0px);
+    height: var(--ripple-size, 0px);
+    left: calc(var(--ripple-x, 0px) - var(--ripple-size, 0px) / 2);
+    top:  calc(var(--ripple-y, 0px) - var(--ripple-size, 0px) / 2);
+    background: currentColor;
+    border-radius: 50%;
     transform: scale(0);
-    transition: transform 400ms ease-out, opacity 400ms ease-out;
-}
-.button--error .button__ripple {
-    background-color: var(--button-color-error-overlay-hover);
-}
-.button--info .button__ripple {
-    background-color: var(--button-color-info-overlay-hover);
-}
-.button--success .button__ripple {
-    background-color: var(--button-color-success-overlay-hover);
-}
-.button--warning .button__ripple {
-    background-color: var(--button-color-warning-overlay-hover);
-}
-.button--filled .button__ripple {
-    background-color: var(--button-filled-color-opacity-overlay-hover);
-}
-.button__ripple--animating {
-    transform: scale(1);
     opacity: 0;
 }
 
-.button > img,
-.button > svg {
-    display: block;
-    height: 1.125rem;
-    width: 1.125rem;
+.button__ripple--animating::before {
+    animation: button-ripple 420ms ease-out;
+}
+@keyframes button-ripple {
+  from { transform: scale(0); opacity: 0.12; }
+  to   { transform: scale(1); opacity: 0; }
 }

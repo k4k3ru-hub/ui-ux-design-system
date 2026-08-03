@@ -1,0 +1,35 @@
+{
+  "name": "@k4k3ru/build-html-component",
+  "version": "1.0.0",
+  "description": "Utility for HTML component build",
+  "type": "module",
+  "files": ["dist"],
+  "scripts": {
+    "clean": "node --eval \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run clean && tsc",
+    "prepack": "npm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/transform.d.ts",
+      "import": "./dist/transform.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js"
+    }
+  },
+  "license": "MIT",
+  "author": "k4k3ru",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
+    "directory": "web/build/html_component"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0"
+  }
+}

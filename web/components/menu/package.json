@@ -1,7 +1,7 @@
 {
-  "name": "@k4k3ru/tokens",
-  "version": "1.0.1",
-  "description": "Utility for tokens",
+  "name": "@k4k3ru/components-menu",
+  "version": "1.0.0",
+  "description": "Utility for menu component",
   "license": "MIT",
   "author": "k4k3ru",
   "type": "module",
@@ -17,6 +17,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
-    "directory": "web/tokens"
+    "directory": "web/components/menu"
   }
 }

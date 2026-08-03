@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="k4k3ru" />
+
+    <link href="../../../tokens/style.css" type="text/css" rel="stylesheet" />
+    <link href="../style.css" type="text/css" rel="stylesheet" />
+
+    <!-
+      - Note: If you open this via file access, you need to comment out to `export { Button }` in script.js.
+      ->
+    <script src="../script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          new Button().Run();
+      });
+    </script>
+
+  </head>
+  <body>
+    <h1>Button</h1>
+
+    <section>
+      <h2>General</h2>
+      <div class="button__container">
+        <button aria-label="Button" class="button button--smaller" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button button--larger" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button button--smaller" type="button">
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button" type="button">
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--larger" type="button">
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+      </div>
+    </section>
+    <section>
+      <h2>Color</h2>
+      <div class="button__container">
+        <button class="button button--smaller button--error" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button button--success" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button button--larger button--warning" type="button">
+          <span class="button__label">Button</span>
+        </button>
+        <button class="button button--larger button--info" type="button">
+          <span class="button__label">Button</span>
+        </button>
+      </div>
+    </section>
+    <section>
+      <h2>Outlined</h2>
+      <div class="button__container">
+        <button class="button button--smaller button--outlined" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--outlined" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--larger button--outlined" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--outlined button--round" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--outlined button--round button--info" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--outlined button--round button--success" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--outlined button--round button--error" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+      </div>
+    </section>
+    <section>
+      <h2>Text</h2>
+      <div class="button__container">
+        <button class="button button--smaller button--text" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--text" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--larger button--text" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--text button--round" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--smaller button--text button--round button--info" type="button">
+          <span class="button__label">Button</span>
+          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+      </div>
+    </section>
+    <section>
+      <div class="button__container">
+        <button class="button button--disabled" type="button">
+          <span class="button__label">Button</span>
+            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--outlined button--disabled" type="button">
+          <span class="button__label">Button</span>
+            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+        <button class="button button--text button--disabled" type="button">
+          <span class="button__label">Button</span>
+            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
+        </button>
+      </div>
+    </section>
+  </body>
+</html>

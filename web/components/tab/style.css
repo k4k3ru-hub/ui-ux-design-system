@@ -1,0 +1,356 @@
+@charset "UTF-8";
+
+/*
+ * Tab
+ *
+ * HTML:
+ * <div class="tab__container [tab__container--segmented|tab__container--scrollable]">
+ *   <div aria-label="Tabs" class="tab__list" role="tablist">
+ *     <button aria-selected="true" class="tab" data-tab-target="tab-content-1" role="tab" tabindex="0" type="button">
+ *       <svg class="tab__icon"><use href="/img/splite.svg#ID"></svg>
+ *       <span class="tab__label">TAB-1</span>
+ *       <span class="tab__badge">3</span>
+ *       <span class="tab__indicator" aria-hidden="true"></span>
+ *     </button>
+ *     <button aria-selected="false" class="tab" data-tab-target="tab-content-2" role="tab" tabindex="-1" type="button">
+ *       <svg aria-hidden="true" class="tab__icon"><use href="/img/splite.svg#ID"></svg>
+ *       <span class="tab__label">TAB-2</span>
+ *       <span aria-hidden="true" class="tab__indicator"></span>
+ *     </button>
+ *   </div>
+ * </div>
+ *
+ * <div class="tab__panels">
+ *   <div class="tab__panel" data-tab-id="tab-content-1" role="tabpanel"></div>
+ *   <div class="tab__panel" data-tab-id="tab-content-2" role="tabpanel" hidden></div>
+ * </div>
+ *
+ *
+ * Available attributes / classes:
+ *   Containers:
+ *     - tab__container:             Base container.
+ *     - tab__container--segmented:  Segmented style tabs.
+ *     - tab__container--scrollable: Horizontal scrollable tab list.
+ *
+ *   Tab list:
+ *     - tab__list: Tab buttons wrapper (role="tablist").
+ *
+ *   Tab button:
+ *     - tab:                        Tab button (role="tab").
+ *     - tab[aria-selected="true"]:  Selected (active) tab. Should have tabindex="0" and be focusable.
+ *     - tab[aria-selected="false"]: Unselected tab. Should have tabindex="-1" (managed by roving tabindex).
+ *
+ *   Tab parts:
+ *     - tab__icon:         Leading icon.
+ *     - tab__label:        Label text.
+ *     - tab__badge:        Badge (count / dot).
+ *     - tab__badge--small: Dot badge.
+ *     - tab__badge--large: Large badge for 2-3+ digits.
+ *     - tab__indicator:    Underline / active indicator element.
+ *
+ *   Panels:
+ *     - tab__panels:        Panels wrapper.
+ *     - tab__panels--fade:  Opt-in fade transition on panel switching.
+ *     - tab__panel:         Panel (role="tabpanel").
+ *     - tab__panel[hidden]: Hide panel.
+ *
+ */
+
+
+/* root */
+:root {
+    --tab-background: var(--color-surface);
+    --tab-segmented-background: var(--color-surface-container);
+    --tab-segmented-background-active: var(--color-on-primary);
+    --tab-border-color: var(--color-outline);
+    --tab-color: var(--color-on-surface);
+    --tab-color-active: var(--color-primary);
+    --tab-font-size: var(--typography-label-small-font-size);
+    --tab-vertical-font-size: var(--typography-label-medium-font-size);
+    --tab-height: 40px;
+    --tab-icon-height: 16px;
+    --tab-vertical-icon-height: 20px;
+    --tab-icon-weight: 16px;
+    --tab-vertical-icon-weight: 20px;
+    --tab-indicator-height: 2px;
+    --tab-indicator-radius: 2px;
+    --tab-line-height: var(--typography-label-small-line-height);
+    --tab-vertical-line-height: var(--typography-label-medium-line-height);
+    --tab-gap: 4px;
+    --tab-indicator-color: currentColor;
+    --tab-badge-color: var(--color-error);
+    --tab-badge-on-color: var(--color-on-error);
+}
+
+
+/*
+ * Tab container
+ */
+.tab__container {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.tab__container--segmented {
+}
+
+
+/*
+ * Tab list
+ */
+.tab__list {
+    align-items: stretch;
+    border-bottom: 1px solid var(--tab-border-color);
+    display: flex;
+    gap: var(--tab-gap);
+    margin: 0;
+    padding: 0;
+}
+.tab__container--segmented .tab__list {
+    background: var(--tab-segmented-background);
+    border: unset;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: inline-flex;
+    padding: 4px;
+    gap: 0;
+}
+
+
+/*
+ * Tab
+ */
+.tab {
+    align-items: center;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    color: var(--tab-color);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--tab-font-size);
+    font-weight: normal;
+    height: var(--tab-height);
+    line-height: var(--tab-line-height);
+    margin: 0;
+    gap: 2px;
+    padding: 0 12px;
+    position: relative;
+    transition: background var(--motion-standard) var(--easing-standard);
+    white-space: nowrap;
+}
+.tab__container--segmented .tab {
+    border-radius: 8px;
+}
+.tab[aria-selected="true"] {
+  color: var(--tab-color-active);
+}
+.tab__container--segmented .tab[aria-selected="true"] {
+    color: inherit;
+}
+.tab::before {
+    background: var(--tab-color-active);
+    border-radius: inherit;
+    content: "";
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+.tab:hover::before {
+    opacity: 0.08;
+    transition: opacity var(--motion-standard) var(--easing-standard);
+}
+.tab__container--segmented .tab[aria-selected="true"]::before {
+    background: var(--tab-color-active);
+    opacity: 0.12;
+}
+.tab__container--segmented .tab[aria-selected="true"]:hover::before {
+    opacity: 0.16;
+}
+
+
+.tab--vertical {
+    flex-direction: column;
+    gap: 4px;
+    height: auto;
+    justify-content: center;
+    padding: 8px 12px;
+    position: relative;
+}
+
+
+.tab__indicator {
+    background: var(--tab-indicator-color);
+    border-top-left-radius: var(--tab-indicator-radius);
+    border-top-right-radius: var(--tab-indicator-radius);
+    bottom: 0;
+    height: var(--tab-indicator-height);
+    left: 8px;
+    position: absolute;
+    right: 8px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 160ms ease;
+}
+.tab__container--segmented .tab__indicator {
+    display: none;
+}
+.tab[aria-selected="true"] .tab__indicator {
+    transform: scaleX(1);
+}
+
+
+/*
+ * Tab label
+ */
+.tab__label {
+    color: currentColor;
+    filter: opacity(0.6);
+    font-size: var(--tab-font-size);
+    font-weight: normal;
+    line-height: var(--tab-line-height);
+    position: relative;
+}
+.tab--vertical .tab__label {
+    font-size: var(--tab-vertical-font-size);
+    line-height: var(--tab-vertical-line-height);
+}
+.tab[aria-selected="true"] .tab__label {
+    filter: opacity(1);
+}
+
+
+/*
+ * Tab icon
+ */
+.tab__icon {
+    width: var(--tab-icon-weight);
+    height: var(--tab-icon-height);
+    fill: currentColor;
+    position: relative;
+}
+.tab--vertical .tab__icon {
+    width: var(--tab-vertical-icon-weight);
+    height: var(--tab-vertical-icon-height);
+}
+
+
+/*
+ * Tab badge
+ */
+.tab__badge {
+    align-items: center;
+    background: var(--tab-badge-color, rgba(0,0,0,0.12));
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: var(--tab-badge-on-color, currentColor);
+    display: inline-flex;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    font-weight: bold;
+    height: 18px;
+    justify-content: center;
+    letter-spacing: 0;
+    line-height: 1;
+    padding: 0;
+    position: relative;
+    width: 18px;
+}
+.tab__badge--small {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+}
+.tab__badge--large {
+    height: 26px;
+    width: 26px;
+}
+.tab--vertical .tab__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+.tab--vertical .tab__badge--small {
+    top: 4px;
+    right: 4px;
+}
+.tab--vertical .tab__badge--large {
+    top: -4px;
+    right: -4px;
+}
+
+
+
+/*
+ * Tab panels
+ */
+.tab__panels {
+    margin: 0;
+    padding-top: 12px;
+    width: 100%;
+}
+
+.tab__panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 180ms var(--easing-standard, ease), visibility 0ms linear 0ms;
+}
+.tab__panels--fade .tab__panel {
+  opacity: 1;
+  transition: opacity 300ms var(--easing-standard, ease);
+}
+.tab__panels--fade .tab__panel--fade-in {
+    opacity: 0;
+}
+
+.tab__panel[hidden] {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/*
+ * Tab ripple
+ */
+.tab__ripple {
+    inset: 0;
+    overflow: hidden; 
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
+}
+.tab__ripple::before {
+    content: "";
+    position: absolute;
+    width: var(--ripple-size, 0px);
+    height: var(--ripple-size, 0px);
+    left: calc(var(--ripple-x, 0px) - var(--ripple-size, 0px) / 2);
+    top:  calc(var(--ripple-y, 0px) - var(--ripple-size, 0px) / 2);
+    background: var(--tab-color-active);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.tab__ripple--animating::before {
+    animation: tab-ripple 420ms ease-out;
+}
+@keyframes tab-ripple {
+  from { transform: scale(0); opacity: 0.12; }
+  to   { transform: scale(1); opacity: 0; }
+}
+
+
+
+
+
+
+
+
+

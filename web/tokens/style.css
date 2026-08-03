@@ -75,12 +75,14 @@
     --typography-title-small-line-height:  1.4375rem; /* 23px */
 
     /* Label */
-    --typography-label-large-font-size:    1rem;      /* 16px */
-    --typography-label-large-line-height:  1.4375rem; /* 23px */
-    --typography-label-medium-font-size:   0.875rem;  /* 14px */
-    --typography-label-medium-line-height: 1.125rem;  /* 18px */
-    --typography-label-small-font-size:    0.8125rem; /* 13px */
-    --typography-label-small-line-height:  1.125rem;  /* 18px */
+    --typography-label-large-font-size:     1rem;      /* 16px */
+    --typography-label-large-line-height:   1.4375rem; /* 23px */
+    --typography-label-medium-font-size:    0.875rem;  /* 14px */
+    --typography-label-medium-line-height:  1.125rem;  /* 18px */
+    --typography-label-small-font-size:     0.8125rem; /* 13px */
+    --typography-label-small-line-height:   1.125rem;  /* 18px */
+    --typography-label-x-small-font-size:   0.75rem;   /* 12px */
+    --typography-label-x-small-line-height: 1rem;      /* 16px */
 
     /* Body */
     --typography-body-large-font-size:    1.125rem;  /* 18px */
@@ -109,6 +111,27 @@
     --typography-table-caption-medium-line-height: var(--typography-label-small-line-height);  /* 18px */
 }
 
+
+/*
+ * Control
+ */
+:root {
+    --control-height-small: 2rem;         /* 32px */
+    --control-height-medium: 2.5rem;      /* 40px */
+    --control-height-large: 3rem;         /* 48px */
+    --control-padding-small: 0 0.5rem;    /* 8px */
+    --control-padding-medium: 0 0.75rem;  /* 12px */
+    --control-padding-large: 0 1rem;      /* 16px */
+    --control-gap-small: 0.25rem;         /* 4px */
+    --control-gap-medium: 0.5rem;         /* 8px */
+    --control-gap-large: 0.5rem;          /* 8px */
+    --control-radius-small: 0.5rem;       /* 8px */
+    --control-radius-medium: 0.75rem;     /* 12px */
+    --control-radius-large: 1rem;         /* 16px */
+    --control-icon-size-small: 1.125rem;  /* 18px */
+    --control-icon-size-medium: 1.375rem; /* 22px */
+    --control-icon-size-large: 1.625rem;  /* 26px */
+}
 
 
 /*
@@ -156,6 +179,14 @@
     --color-on-warning: #ffffff;
     --color-warning-container: #ffe249;
     --color-on-warning-container: #211b00;
+    --color-surface: #fcfcfc;
+    --color-surface-container-lowest; #ffffff;
+    --color-surface-container-low: #fafafa;
+    --color-surface-container: #f5f5f5;
+    --color-surface-container-high: #f0f0f0;
+    --color-surface-container-highest: #ebebeb;
+    --color-on-surface: #1a1a1a;
+    --color-outline: #cfcfcf;
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -200,6 +231,14 @@
         --color-on-warning: #393000;
         --color-warning-container: #524600;
         --color-on-warning-container: #ffe249;
+        --color-surface: #141414;
+        --color-surface-container-lowest; #0f0f0f;
+        --color-surface-container-low: #1a1a1a;
+        --color-surface-container: #1f1f1f;
+        --color-surface-container-high: #2b2b2b;
+        --color-surface-container-highest: #383838;
+        --color-on-surface: #e6e6e6;
+        --color-outline: #4d4d4d;
     }
 }
 html[data-theme="light"] {
@@ -244,6 +283,14 @@ html[data-theme="light"] {
     --color-on-warning: #ffffff;
     --color-warning-container: #ffe249;
     --color-on-warning-container: #211b00;
+    --color-surface: #fcfcfc;
+    --color-surface-container-lowest; #ffffff;
+    --color-surface-container-low: #fafafa;
+    --color-surface-container: #f5f5f5;
+    --color-surface-container-high: #f0f0f0;
+    --color-surface-container-highest: #ebebeb;
+    --color-on-surface: #1a1a1a;
+    --color-outline: #cfcfcf;
 }
 html[data-theme="dark"] {
     --color-opacity-overlay-hover: #00000014;
@@ -287,4 +334,12 @@ html[data-theme="dark"] {
     --color-on-warning: #393000;
     --color-warning-container: #524600;
     --color-on-warning-container: #ffe249;
+    --color-surface: #141414;
+    --color-surface-container-lowest; #0f0f0f;
+    --color-surface-container-low: #1a1a1a;
+    --color-surface-container: #1f1f1f;
+    --color-surface-container-high: #2b2b2b;
+    --color-surface-container-highest: #383838;
+    --color-on-surface: #e6e6e6;
+    --color-outline: #4d4d4d;
 }
