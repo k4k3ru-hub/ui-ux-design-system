@@ -1,16 +1,18 @@
 {
-  "name": "@k4k3ru/tokens",
+  "name": "@k4k3ru/design-system-tokens",
   "version": "1.0.1",
-  "description": "Utility for tokens",
+  "description": "Design tokens for the k4k3ru design system",
   "license": "MIT",
   "author": "k4k3ru",
-  "type": "module",
-  "files": ["dist"],
-  "main": "dist/script.mjs",
-  "scripts": {
-    "build": "node build.mjs",
-    "prepublishOnly": "npm run build"
+  "files": [
+    "style.css"
+  ],
+  "exports": {
+    "./style.css": "./style.css"
   },
+  "sideEffects": [
+    "*.css"
+  ],
   "publishConfig": {
     "access": "public"
   },

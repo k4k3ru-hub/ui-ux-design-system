@@ -1,28 +1,50 @@
-# Web Tokens
+# @k4k3ru/design-system-tokens
 
-This package provides **shared Design Tokens for Web applications** as CSS Variables.
+Shared design tokens for web applications, provided as CSS custom properties.
 
-Importing this package first allows all downstream UI components to use the same
-colors, typography, motion, elevation, and other foundational design values by default.
+Import this package before downstream UI components so they use the same colors,
+typography, motion, elevation, and control values.
 
 
 ## Installation
 
-```console
-npm i @k4k3ru/tokens
+```sh
+npm install @k4k3ru/design-system-tokens
 ```
 
 
 ## Usage
 
-1. Import the package.
-
-- minified style:
 ```css
-@import "YOUR_PROJECT_PATH/node_modules/@k4k3ru/tokens/dist/style.min.css";
+@import "@k4k3ru/design-system-tokens/style.css";
 ```
 
-- raw style:
-```css
-@import "YOUR_PROJECT_PATH/node_modules/@k4k3ru/tokens/dist/style.css";
+The stylesheet can also be imported from JavaScript when supported by your
+bundler:
+
+```js
+import "@k4k3ru/design-system-tokens/style.css";
 ```
+
+## Included tokens
+
+- Motion easing, duration, and common transitions
+- Elevation shadows
+- Typography sizes and line heights
+- Control dimensions, spacing, radii, and icon sizes
+- Semantic colors for status, surface, content, and outlines
+
+## Themes
+
+Colors follow `prefers-color-scheme` by default. Set `data-theme` on the root
+element to explicitly select a theme:
+
+```html
+<html data-theme="dark">
+```
+
+Supported values are `light` and `dark`.
+
+## License
+
+[MIT](./LICENSE)

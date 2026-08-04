@@ -1,11 +1,11 @@
-# @k4k3ru/components-button
+# @k4k3ru/design-system-button
 
 A lightweight, accessible Button component for HTML applications. It provides BEM-based CSS, semantic color variants, responsive theme fallbacks, and an optional TypeScript-powered ripple interaction.
 
 ## Installation
 
 ```sh
-npm install @k4k3ru/components-button
+npm install @k4k3ru/design-system-button
 ```
 
 The shared design tokens are optional. When they are not installed, the Button component uses its own light and dark fallback values.
@@ -20,7 +20,7 @@ Import the shared tokens first when using them, followed by the Button styleshee
 
 ```css
 @import "@k4k3ru/tokens/dist/style.css";
-@import "@k4k3ru/components-button/style.css";
+@import "@k4k3ru/design-system-button/style.css";
 ```
 
 Create a button using the `.button` block and its elements.
@@ -37,7 +37,7 @@ Create a button using the `.button` block and its elements.
 Initialize the optional ripple interaction once per document.
 
 ```ts
-import { Button } from "@k4k3ru/components-button";
+import { Button } from "@k4k3ru/design-system-button";
 
 const button = new Button();
 button.run();
