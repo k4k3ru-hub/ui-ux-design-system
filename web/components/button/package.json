@@ -1,14 +1,26 @@
 {
   "name": "@k4k3ru/components-button",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Utility for button component",
   "license": "MIT",
   "author": "k4k3ru",
   "type": "module",
   "files": ["dist"],
-  "main": "dist/script.mjs",
+  "main": "./dist/script.js",
+  "module": "./dist/script.js",
+  "types": "./dist/script.d.ts",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "types": "./dist/script.d.ts",
+      "import": "./dist/script.js",
+      "default": "./dist/script.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
   "scripts": {
-    "build": "node build.mjs",
+    "build": "tsc --project tsconfig.json && node --input-type=module --eval \"import { copyFile } from 'node:fs/promises'; await copyFile('style.css', 'dist/style.css')\"",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
     "prepublishOnly": "npm run build"
   },
   "publishConfig": {

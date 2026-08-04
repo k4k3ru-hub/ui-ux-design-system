@@ -4,7 +4,9 @@
   "description": "Welcome to the **UI UX Design System** repository. This repository provides a collection of useful HTML / CSS / JavaScript / TypeScript libraries for various applications.",
   "main": "index.js",
   "scripts": {
-    "build:i18n-json": "node web/i18n/json/build.mjs"
+    "build:i18n-json": "node web/i18n/json/build.mjs",
+    "build:button": "npm run build --prefix web/components/button",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -12,13 +14,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/k4k3ru-hub/ui-ux-design-system/issues"
   },
   "homepage": "https://github.com/k4k3ru-hub/ui-ux-design-system#readme",
   "devDependencies": {
-    "esbuild": "^0.27.1"
+    "esbuild": "^0.27.1",
+    "typescript": "~5.9.3"
   }
 }

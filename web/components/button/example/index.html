@@ -1,146 +1,438 @@
-<!DOCTYPE html>
-<html data-theme="light">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="author" content="k4k3ru" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Button component examples for the k4k3ru design system">
+    <title>Button · k4k3ru Design System</title>
 
-    <link href="../../../tokens/style.css" type="text/css" rel="stylesheet" />
-    <link href="../style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../tokens/style.css">
+    <link rel="stylesheet" href="../dist/style.css">
 
-    <!-
-      - Note: If you open this via file access, you need to comment out to `export { Button }` in script.js.
-      ->
-    <script src="../script.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          new Button().Run();
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 85% 8%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 22rem),
+          var(--color-surface);
+        color: var(--color-on-surface);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      button,
+      code {
+        font: inherit;
+      }
+
+      .demo-shell {
+        margin: 0 auto;
+        max-width: 76rem;
+        padding: 1.5rem clamp(1rem, 4vw, 3rem) 5rem;
+      }
+
+      .demo-header {
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        margin-bottom: clamp(3rem, 8vw, 6rem);
+      }
+
+      .demo-brand {
+        align-items: center;
+        display: inline-flex;
+        font-size: 0.875rem;
+        font-weight: 700;
+        gap: 0.625rem;
+        letter-spacing: 0.02em;
+      }
+
+      .demo-brand__mark {
+        align-items: center;
+        background: var(--color-primary);
+        border-radius: 0.625rem;
+        color: var(--color-on-primary);
+        display: inline-flex;
+        height: 2rem;
+        justify-content: center;
+        width: 2rem;
+      }
+
+      .demo-hero {
+        margin-bottom: clamp(3.5rem, 8vw, 6rem);
+        max-width: 52rem;
+      }
+
+      .demo-eyebrow {
+        color: var(--color-primary);
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        margin: 0 0 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .demo-title {
+        font-size: clamp(3rem, 9vw, 6.75rem);
+        font-weight: 750;
+        letter-spacing: -0.065em;
+        line-height: 0.92;
+        margin: 0;
+      }
+
+      .demo-lead {
+        color: color-mix(in srgb, var(--color-on-surface) 72%, transparent);
+        font-size: clamp(1rem, 2vw, 1.25rem);
+        margin: 1.5rem 0 0;
+        max-width: 42rem;
+      }
+
+      .demo-actions {
+        margin-top: 2rem;
+      }
+
+      .demo-main {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .demo-section {
+        background: color-mix(in srgb, var(--color-surface-container) 78%, transparent);
+        border: 1px solid color-mix(in srgb, var(--color-outline) 72%, transparent);
+        border-radius: 1.5rem;
+        overflow: hidden;
+      }
+
+      .demo-section__header {
+        border-bottom: 1px solid color-mix(in srgb, var(--color-outline) 60%, transparent);
+        display: grid;
+        gap: 0.25rem;
+        padding: 1.25rem clamp(1.25rem, 3vw, 2rem);
+      }
+
+      .demo-section__title {
+        font-size: 1.125rem;
+        line-height: 1.3;
+        margin: 0;
+      }
+
+      .demo-section__description {
+        color: color-mix(in srgb, var(--color-on-surface) 64%, transparent);
+        font-size: 0.875rem;
+        margin: 0;
+      }
+
+      .demo-section__body {
+        padding: clamp(1.25rem, 4vw, 2.5rem);
+      }
+
+      .demo-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+      }
+
+      .demo-sample {
+        min-width: 0;
+      }
+
+      .demo-sample__label {
+        color: color-mix(in srgb, var(--color-on-surface) 58%, transparent);
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.875rem;
+        text-transform: uppercase;
+      }
+
+      .demo-stage {
+        align-items: center;
+        background: var(--color-surface);
+        border: 1px solid color-mix(in srgb, var(--color-outline) 48%, transparent);
+        border-radius: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        min-height: 6.5rem;
+        padding: 1.25rem;
+      }
+
+      .demo-stage--column {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .demo-code {
+        background: color-mix(in srgb, var(--color-on-surface) 7%, transparent);
+        border-radius: 0.5rem;
+        color: color-mix(in srgb, var(--color-on-surface) 72%, transparent);
+        display: block;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.75rem;
+        margin-top: 0.75rem;
+        overflow-x: auto;
+        padding: 0.75rem;
+        white-space: nowrap;
+      }
+
+      .demo-status {
+        color: color-mix(in srgb, var(--color-on-surface) 68%, transparent);
+        font-size: 0.875rem;
+        margin: 0;
+      }
+
+      .demo-footer {
+        color: color-mix(in srgb, var(--color-on-surface) 55%, transparent);
+        font-size: 0.8125rem;
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .demo-icon-button {
+        padding-inline: 0;
+        width: 2.5rem;
+      }
+
+      .demo-icon-button.button--small {
+        width: 2rem;
+      }
+
+      .demo-icon-button.button--large {
+        width: 3rem;
+      }
+
+      @media (max-width: 40rem) {
+        .demo-header {
+          align-items: flex-start;
+        }
+
+        .demo-header .button__label {
+          display: none;
+        }
+
+        .demo-section {
+          border-radius: 1.125rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="demo-shell">
+      <header class="demo-header">
+        <div class="demo-brand">
+          <span class="demo-brand__mark" aria-hidden="true">k4</span>
+          <span>Design System</span>
+        </div>
+
+        <button class="button button--text button--round" id="theme-toggle" type="button">
+          <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm9 3a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2h1ZM5 11a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2h1Zm13.36-5.36a1 1 0 0 1 0 1.41l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0ZM7.76 16.24a1 1 0 0 1 0 1.41l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 0Zm9.89 0 .71.71a1 1 0 1 1-1.41 1.41l-.71-.71a1 1 0 1 1 1.41-1.41ZM7.05 5.64l.71.71a1 1 0 0 1-1.41 1.41l-.71-.71a1 1 0 1 1 1.41-1.41ZM12 18a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1Z"/>
+          </svg>
+          <span class="button__label">Theme</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="demo-hero" aria-labelledby="page-title">
+          <p class="demo-eyebrow">Components / Actions</p>
+          <h1 class="demo-title" id="page-title">Button</h1>
+          <p class="demo-lead">
+            Buttons help people take action, make choices, and move through an interface.
+            Combine appearance, color, size, and shape modifiers without changing the markup structure.
+          </p>
+
+          <div class="button-group demo-actions">
+            <button class="button button--large button--success button--round" id="hero-action" type="button">
+              <span class="button__label">Try the button</span>
+              <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 11a1 1 0 0 0 0 2h11.59l-4.3 4.29a1 1 0 1 0 1.42 1.42l6-6a1 1 0 0 0 0-1.42l-6-6a1 1 0 1 0-1.42 1.42l4.3 4.29H5Z"/>
+              </svg>
+            </button>
+            <button class="button button--large button--outlined button--round" type="button">
+              <span class="button__label">Secondary action</span>
+            </button>
+          </div>
+        </section>
+
+        <div class="demo-main">
+          <section class="demo-section" aria-labelledby="appearance-title">
+            <header class="demo-section__header">
+              <h2 class="demo-section__title" id="appearance-title">Appearance</h2>
+              <p class="demo-section__description">Choose emphasis based on the importance of the action.</p>
+            </header>
+            <div class="demo-section__body demo-grid">
+              <div class="demo-sample">
+                <span class="demo-sample__label">Filled</span>
+                <div class="demo-stage">
+                  <button class="button" type="button"><span class="button__label">Continue</span></button>
+                </div>
+                <code class="demo-code">.button</code>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Outlined</span>
+                <div class="demo-stage">
+                  <button class="button button--outlined" type="button"><span class="button__label">Continue</span></button>
+                </div>
+                <code class="demo-code">.button .button--outlined</code>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Text</span>
+                <div class="demo-stage">
+                  <button class="button button--text" type="button"><span class="button__label">Continue</span></button>
+                </div>
+                <code class="demo-code">.button .button--text</code>
+              </div>
+            </div>
+          </section>
+
+          <section class="demo-section" aria-labelledby="color-title">
+            <header class="demo-section__header">
+              <h2 class="demo-section__title" id="color-title">Semantic color</h2>
+              <p class="demo-section__description">Color communicates the outcome or context of an action.</p>
+            </header>
+            <div class="demo-section__body demo-grid">
+              <div class="demo-sample">
+                <span class="demo-sample__label">Filled</span>
+                <div class="demo-stage">
+                  <button class="button button--info" type="button"><span class="button__label">Information</span></button>
+                  <button class="button button--success" type="button"><span class="button__label">Confirm</span></button>
+                  <button class="button button--warning" type="button"><span class="button__label">Review</span></button>
+                  <button class="button button--error" type="button"><span class="button__label">Delete</span></button>
+                </div>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Outlined</span>
+                <div class="demo-stage">
+                  <button class="button button--outlined button--info" type="button"><span class="button__label">Information</span></button>
+                  <button class="button button--outlined button--success" type="button"><span class="button__label">Confirm</span></button>
+                  <button class="button button--outlined button--warning" type="button"><span class="button__label">Review</span></button>
+                  <button class="button button--outlined button--error" type="button"><span class="button__label">Delete</span></button>
+                </div>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Text</span>
+                <div class="demo-stage">
+                  <button class="button button--text button--info" type="button"><span class="button__label">Information</span></button>
+                  <button class="button button--text button--success" type="button"><span class="button__label">Confirm</span></button>
+                  <button class="button button--text button--warning" type="button"><span class="button__label">Review</span></button>
+                  <button class="button button--text button--error" type="button"><span class="button__label">Delete</span></button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="demo-section" aria-labelledby="scale-title">
+            <header class="demo-section__header">
+              <h2 class="demo-section__title" id="scale-title">Size, shape, and icon</h2>
+              <p class="demo-section__description">Keep the hierarchy clear while adapting to available space.</p>
+            </header>
+            <div class="demo-section__body demo-grid">
+              <div class="demo-sample">
+                <span class="demo-sample__label">Size</span>
+                <div class="demo-stage">
+                  <button class="button button--small" type="button"><span class="button__label">Small</span></button>
+                  <button class="button" type="button"><span class="button__label">Medium</span></button>
+                  <button class="button button--large" type="button"><span class="button__label">Large</span></button>
+                </div>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Rounded</span>
+                <div class="demo-stage">
+                  <button class="button button--round" type="button"><span class="button__label">Add member</span></button>
+                  <button class="button button--outlined button--round" type="button"><span class="button__label">View profile</span></button>
+                </div>
+              </div>
+              <div class="demo-sample">
+                <span class="demo-sample__label">Icon</span>
+                <div class="demo-stage">
+                  <button class="button button--success" type="button">
+                    <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z"/></svg>
+                    <span class="button__label">Save changes</span>
+                  </button>
+                  <button class="button button--outlined button--round demo-icon-button" aria-label="Add item" type="button">
+                    <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="demo-section" aria-labelledby="state-title">
+            <header class="demo-section__header">
+              <h2 class="demo-section__title" id="state-title">Disabled state</h2>
+              <p class="demo-section__description">Use the native disabled attribute whenever the element is a button.</p>
+            </header>
+            <div class="demo-section__body">
+              <div class="demo-stage">
+                <button class="button" disabled type="button"><span class="button__label">Filled</span></button>
+                <button class="button button--outlined" disabled type="button"><span class="button__label">Outlined</span></button>
+                <button class="button button--text" disabled type="button"><span class="button__label">Text</span></button>
+                <button class="button button--error" disabled type="button"><span class="button__label">Delete</span></button>
+              </div>
+              <code class="demo-code">&lt;button class="button" disabled type="button"&gt;…&lt;/button&gt;</code>
+            </div>
+          </section>
+
+          <section class="demo-section" aria-labelledby="interaction-title">
+            <header class="demo-section__header">
+              <h2 class="demo-section__title" id="interaction-title">Interaction</h2>
+              <p class="demo-section__description">Click to verify the event lifecycle and ripple response.</p>
+            </header>
+            <div class="demo-section__body">
+              <div class="demo-stage demo-stage--column">
+                <button class="button button--info button--round" id="counter-button" type="button">
+                  <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"/></svg>
+                  <span class="button__label">Count interaction</span>
+                </button>
+                <p class="demo-status" id="interaction-status" aria-live="polite">No interactions yet.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="demo-footer">@k4k3ru/components-button · TypeScript + CSS</footer>
+    </div>
+
+    <script type="module">
+      import { Button } from '../dist/script.js';
+
+      const button = new Button();
+      button.run();
+
+      const root = document.documentElement;
+      const themeToggle = document.querySelector('#theme-toggle');
+      themeToggle?.addEventListener('click', () => {
+        const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = nextTheme;
+        themeToggle.setAttribute('aria-label', `Switch to ${nextTheme === 'dark' ? 'light' : 'dark'} theme`);
+      });
+
+      let interactions = 0;
+      const counterButton = document.querySelector('#counter-button');
+      const interactionStatus = document.querySelector('#interaction-status');
+      counterButton?.addEventListener('click', () => {
+        interactions += 1;
+        if (interactionStatus) {
+          interactionStatus.textContent = `${interactions} interaction${interactions === 1 ? '' : 's'} recorded.`;
+        }
+      });
+
+      document.querySelector('#hero-action')?.addEventListener('click', () => {
+        document.querySelector('#appearance-title')?.scrollIntoView({ behavior: 'smooth' });
       });
     </script>
-
-  </head>
-  <body>
-    <h1>Button</h1>
-
-    <section>
-      <h2>General</h2>
-      <div class="button__container">
-        <button aria-label="Button" class="button button--smaller" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button button--larger" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button button--smaller" type="button">
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button" type="button">
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--larger" type="button">
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-      </div>
-    </section>
-    <section>
-      <h2>Color</h2>
-      <div class="button__container">
-        <button class="button button--smaller button--error" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button button--success" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button button--larger button--warning" type="button">
-          <span class="button__label">Button</span>
-        </button>
-        <button class="button button--larger button--info" type="button">
-          <span class="button__label">Button</span>
-        </button>
-      </div>
-    </section>
-    <section>
-      <h2>Outlined</h2>
-      <div class="button__container">
-        <button class="button button--smaller button--outlined" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--outlined" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--larger button--outlined" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--outlined button--round" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--outlined button--round button--info" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--outlined button--round button--success" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--outlined button--round button--error" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-      </div>
-    </section>
-    <section>
-      <h2>Text</h2>
-      <div class="button__container">
-        <button class="button button--smaller button--text" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--text" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--larger button--text" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--text button--round" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--smaller button--text button--round button--info" type="button">
-          <span class="button__label">Button</span>
-          <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-      </div>
-    </section>
-    <section>
-      <div class="button__container">
-        <button class="button button--disabled" type="button">
-          <span class="button__label">Button</span>
-            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--outlined button--disabled" type="button">
-          <span class="button__label">Button</span>
-            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-        <button class="button button--text button--disabled" type="button">
-          <span class="button__label">Button</span>
-            <svg class="button__icon" viewBox="0 0 24 24"><path d="M8.29289 5.29289C7.90237 5.68342 7.90237 6.31658 8.29289 6.70711L13.5858 12L8.29289 17.2929C7.90237 17.6834 7.90237 18.3166 8.29289 18.7071C8.68342 19.0976 9.31658 19.0976 9.70711 18.7071L15.7071 12.7071C16.0976 12.3166 16.0976 11.6834 15.7071 11.2929L9.70711 5.29289C9.31658 4.90237 8.68342 4.90237 8.29289 5.29289Z"/></svg>
-        </button>
-      </div>
-    </section>
   </body>
 </html>
