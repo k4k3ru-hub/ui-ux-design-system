@@ -1,0 +1,21 @@
+{
+  "name": "@k4k3ru/design-system-foundations",
+  "version": "1.0.1",
+  "author": "k4k3ru",
+  "description": "Foundation styles for the k4k3ru design system",
+  "license": "MIT",
+  "files": [
+    "reset.css",
+    "element.css"
+  ],
+  "exports": {
+    "./reset.css": "./reset.css",
+    "./element.css": "./element.css"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

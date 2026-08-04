@@ -1,44 +1,46 @@
 @charset "UTF-8";
 
-/**********************************************************************
- Reset
-**********************************************************************/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del,
-dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup,
-tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form,
-label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, figure, figcaption, footer,
-header, hgroup, menu, nav, output, ruby, section, summary, time, mark,
-audio, video {
+/* Use a predictable box model without changing component sizing. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Prevent font-size adjustments after an orientation change on mobile. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+/* Remove default spacing from common content elements. */
+:where(h1, h2, h3, h4, h5, h6, p, blockquote, figure, dl, dd) {
+    margin: 0;
+}
+
+/* Reset lists only when a class indicates that they are being styled. */
+:where(ol, ul)[class] {
     margin: 0;
     padding: 0;
-    border: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-}
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-    display: block;
-}
-body {
-    line-height: 1;
-}
-a {
-    color: inherit;
-    text-decoration: unset;
-}
-blockquote, q {
-    quotes: none;
-}
-ol, ul {
     list-style: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content: '';
-    content: none;
+
+/* Keep form controls consistent with the surrounding typography. */
+:where(button, input, select, textarea) {
+    color: inherit;
+    font: inherit;
 }
+
+/* Make replaced media responsive while preserving its aspect ratio. */
+:where(img, picture, svg, canvas, video) {
+    display: block;
+    max-width: 100%;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;

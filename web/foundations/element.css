@@ -1,262 +1,135 @@
 @charset "UTF-8";
 
+:root {
+    --element-color-text: var(--color-on-surface, #1a1a1a);
+    --element-color-link: var(--color-info, #005db6);
+    --element-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --element-body-font-size: var(--typography-body-medium-font-size, 1rem);
+    --element-body-line-height: var(--typography-body-medium-line-height, 1.4375rem);
+    --element-h1-font-size: var(--typography-headline-large-font-size, 2.25rem);
+    --element-h1-line-height: var(--typography-headline-large-line-height, 2.875rem);
+    --element-h2-font-size: var(--typography-headline-medium-font-size, 2rem);
+    --element-h2-line-height: var(--typography-headline-medium-line-height, 2.5625rem);
+    --element-h3-font-size: var(--typography-headline-small-font-size, 1.6875rem);
+    --element-h3-line-height: var(--typography-headline-small-line-height, 2.25rem);
+    --element-h4-font-size: var(--typography-title-large-font-size, 1.5625rem);
+    --element-h4-line-height: var(--typography-title-large-line-height, 2rem);
+    --element-h5-font-size: var(--typography-title-medium-font-size, 1.125rem);
+    --element-h5-line-height: var(--typography-title-medium-line-height, 1.6875rem);
+    --element-h6-font-size: var(--typography-title-small-font-size, 1rem);
+    --element-h6-line-height: var(--typography-title-small-line-height, 1.4375rem);
+    --element-small-font-size: var(--typography-body-small-font-size, 0.875rem);
+    --element-small-line-height: var(--typography-body-small-line-height, 1.125rem);
+}
 
-/**********************************************************************
- a
-**********************************************************************/
-.a {
-    color: var(--nkw-color-link);
+@media (prefers-color-scheme: dark) {
+    :root {
+        --element-color-text: var(--color-on-surface, #e6e6e6);
+        --element-color-link: var(--color-info, #a9c7ff);
+    }
+}
+
+html[data-theme="light"] {
+    --element-color-text: var(--color-on-surface, #1a1a1a);
+    --element-color-link: var(--color-info, #005db6);
+}
+
+html[data-theme="dark"] {
+    --element-color-text: var(--color-on-surface, #e6e6e6);
+    --element-color-link: var(--color-info, #a9c7ff);
+}
+
+body {
+    color: var(--element-color-text);
+    fill: currentColor;
+    font-family: var(--element-font-family);
+    font-size: var(--element-body-font-size);
+    line-height: var(--element-body-line-height);
+}
+
+a {
+    color: var(--element-color-link);
     text-decoration: underline;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.15em;
 }
 
-
-/**********************************************************************
- body
-**********************************************************************/
-.body {
-    color: var(--nkw-color-text);
-    fill: var(--nkw-color-text);
-    font-family: var(--nkw-font-family-gothic);
-    font-size: var(--nkw-font-size);
-    line-height: var(--nkw-line-height-medium);
-    margin: 0;
-    position: relative;
-    width: 100%;
-}
-.body.default-color {
-    border-color: var(--nkw-color-default-border);
-    color: var(--nkw-color-default-text);
-    fill: var(--nkw-color-default-text);
-}
-@media screen and (min-width: 600px) {
-    .body {
-        line-height: calc(var(--nkw-line-height-medium) + 0.1);
-    }
-}
-@media screen and (min-width: 768px) {
-    .body {
-        line-height: calc(var(--nkw-line-height-medium) + 0.2);
-    }
-}
-@media screen and (min-width: 896px) {
-    .body {
-        line-height: calc(var(--nkw-line-height-medium) + 0.3);
-    }
-}
-@media screen and (min-width: 1024px) {
-    .body {
-        line-height: calc(var(--nkw-line-height-medium) + 0.4);
-    }
-}
-@media screen and (min-width: 1200px) {
-    .body {
-        line-height: calc(var(--nkw-line-height-medium) + 0.5);
-    }
+a:hover {
+    text-decoration-thickness: 0.125em;
 }
 
-
-/**********************************************************************
- button
-**********************************************************************/
-.button {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    align-items: center;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -webkit-flexbox;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    font-size: inherit;
-    font-weight: bold;
-    -webkit-justify-content: center;
-    justify-content: center;
-    outline: none;
-    padding: 10px 20px;
-    transition: opacity 0.3s ease-in-out;
-}
-.button:hover {
-    opacity: 0.6;
-}
-.button.dark {
-    background-color: var(--nkw-color-dark);
-    color: #fff;
-    fill: #fff;
-}
-.button.error {
-    background-color: var(--nkw-color-error);
-    color: #fff;
-    fill: #fff;
-}
-.button.info {
-    background-color: var(--nkw-color-info);
-    color: #fff;
-    fill: #fff;
-}
-.button.light {
-    background-color: var(--nkw-color-light);
-}
-.button.success {
-    background-color: var(--nkw-color-success);
-    color: #fff;
-    fill: #fff;
-}
-.button.warning {
-    background-color: var(--nkw-color-warning);
-    color: #fff;
-    fill: #fff;
+:where(h1, h2, h3, h4, h5, h6) {
+    font-weight: 700;
 }
 
-
-
-/**********************************************************************
- h1 - h6
-**********************************************************************/
-.h1 {
-    font-size: var(--nkw-h1-font-size);
-    margin: 50px 0;
-}
-.h2 {
-    font-size: var(--nkw-h2-font-size);
-    margin: 120px 0 20px;
-}
-.h3 {
-    font-size: var(--nkw-h3-font-size);
-    margin: 60px 0 20px;
-}
-.h4 {
-    font-size: var(--nkw-h4-font-size);
-}
-.h5 {
-    font-size: var(--nkw-h5-font-size);
-}
-.h6 {
-    font-size: var(--nkw-h6-font-size);
-}
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: bold;
-    line-height: var(--nkw-line-height);
-}
-@media screen and (min-width: 600px) {
-    .h1, .h2, .h3, .h4, .h5, .h6 { line-height: calc(var(--nkw-line-height-medium) + 0.1); }
-}
-@media screen and (min-width: 768px) {
-    .h1, .h2, .h3, .h4, .h5, .h6 { line-height: calc(var(--nkw-line-height-medium) + 0.2); }
-}
-@media screen and (min-width: 896px) {
-    .h1, .h2, .h3, .h4, .h5, .h6 { line-height: calc(var(--nkw-line-height-medium) + 0.3); }
-}
-@media screen and (min-width: 1024px) {
-    .h1, .h2, .h3, .h4, .h5, .h6 { line-height: calc(var(--nkw-line-height-medium) + 0.4); }
-}
-@media screen and (min-width: 1200px) {
-    .h1, .h2, .h3, .h4, .h5, .h6 { line-height: calc(var(--nkw-line-height-medium) + 0.5); }
+h1 {
+    font-size: var(--element-h1-font-size);
+    line-height: var(--element-h1-line-height);
 }
 
-
-/**********************************************************************
- header
-**********************************************************************/
-.header {
-    -webkit-align-items: center;
-    align-items: center;
-    box-sizing: border-box;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    height: var(--nkw-header-height);
+h2 {
+    font-size: var(--element-h2-font-size);
+    line-height: var(--element-h2-line-height);
 }
 
-
-/**********************************************************************
- img
-**********************************************************************/
-.img {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
-}
-.img.contain {
-    object-fit: contain;
+h3 {
+    font-size: var(--element-h3-font-size);
+    line-height: var(--element-h3-line-height);
 }
 
+h4 {
+    font-size: var(--element-h4-font-size);
+    line-height: var(--element-h4-line-height);
+}
 
-/**********************************************************************
- ol
-**********************************************************************/
-.ol {
+h5 {
+    font-size: var(--element-h5-font-size);
+    line-height: var(--element-h5-line-height);
+}
+
+h6 {
+    font-size: var(--element-h6-font-size);
+    line-height: var(--element-h6-line-height);
+}
+
+:where(ol, ul) {
+    margin-block: 1em;
+    padding-inline-start: 2em;
+}
+
+ol {
     list-style-type: decimal;
 }
 
-
-/**********************************************************************
- section
-**********************************************************************/
-.section {
-    width: 100%;
-}
-/*
-.section {
-    margin: 20px auto;
-    width: calc(100% - 20px);
-}
-.section.full-width {
-    width: 100%;
-}
-@media screen and (min-width: 600px) {
-    .section {
-        width: calc(100% - 40px);
-    }
-}
-*/
-
-
-/**********************************************************************
- small
-**********************************************************************/
-.small {
-    font-size: smaller;
-}
-
-
-/**********************************************************************
- strong
-**********************************************************************/
-.strong {
-    font-size: bold;
-    position: relative;
-}
-.strong:before {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 3px;
-    content: '';
-    height: 10px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-
-/**********************************************************************
-ul
-**********************************************************************/
-.ul {
+ul {
     list-style-type: disc;
-    margin: 20px 0 20px 40px;
 }
-.ul .ul {
+
+ul ul {
     list-style-type: circle;
-    margin: 0 0 0 40px;
 }
-.ul .ul .ul {
+
+ul ul ul {
     list-style-type: square;
+}
+
+:where(ol, ul) :where(ol, ul) {
+    margin-block: 0;
+}
+
+img {
+    height: auto;
+}
+
+small {
+    font-size: var(--element-small-font-size);
+    line-height: var(--element-small-line-height);
+}
+
+strong {
+    font-weight: 700;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
 }
