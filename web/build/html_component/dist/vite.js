@@ -1,6 +1,5 @@
-// vite.ts
 import { relative, resolve } from "node:path";
-import { HtmlComponentTransformer, } from "./transform.js";
+import { HtmlComponentTransformer } from "./transform.js";
 export class HtmlComponentVitePlugin {
     options;
     componentsDirectory = "";
@@ -70,4 +69,3 @@ export class HtmlComponentVitePlugin {
 export function htmlComponentPlugin(options = {}) {
     return new HtmlComponentVitePlugin(options).create();
 }
-//# sourceMappingURL=vite.js.map

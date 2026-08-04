@@ -14,4 +14,3 @@ export declare class HtmlComponentVitePlugin {
     private isComponentHtml;
 }
 export declare function htmlComponentPlugin(options?: HtmlComponentPluginOptions): Plugin;
-//# sourceMappingURL=vite.d.ts.map

@@ -1,6 +1,3 @@
-//
-// transform.ts
-//
 import { readFile } from "node:fs/promises";
 import { isAbsolute, relative, resolve } from "node:path";
 const componentElementPattern = /<x-component\s+name=(["'])([a-z0-9]+(?:-[a-z0-9]+)*)\1\s*>\s*<\/x-component>/gi;
@@ -8,13 +5,13 @@ export class HtmlComponentTransformer {
     componentsDirectory;
     constructor(options) {
         if (typeof options?.componentsDirectory !== "string" || options.componentsDirectory.trim() === "") {
-            throw new TypeError("componentsDirectory must be a non-empty string");
+            throw new TypeError(`invalid parameter: componentsDirectory=${options.componentsDirectory.trim()}`);
         }
         this.componentsDirectory = resolve(options.componentsDirectory);
     }
     async transform(html) {
         if (typeof html !== "string") {
-            throw new TypeError("html must be a string");
+            throw new TypeError(`invalid parameter: html=${html}`);
         }
         return this.expand(html, []);
     }
@@ -33,10 +30,7 @@ export class HtmlComponentTransformer {
             }
             const componentPath = this.resolveComponentPath(componentName);
             if (dependencyChain.includes(componentPath)) {
-                throw new Error(`Circular x-component dependency detected: ${[
-                    ...dependencyChain,
-                    componentPath,
-                ].join(" -> ")}`);
+                throw new Error(`Circular x-component dependency detected: ${[...dependencyChain, componentPath].join(" -> ")}`);
             }
             const componentHtml = await this.readComponent(componentName, componentPath);
             const expandedHtml = await this.expand(componentHtml, [...dependencyChain, componentPath]);
@@ -65,4 +59,3 @@ export class HtmlComponentTransformer {
         }
     }
 }
-//# sourceMappingURL=transform.js.map

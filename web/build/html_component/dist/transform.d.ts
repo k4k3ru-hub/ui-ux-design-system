@@ -9,4 +9,3 @@ export declare class HtmlComponentTransformer {
     private resolveComponentPath;
     private readComponent;
 }
-//# sourceMappingURL=transform.d.ts.map

@@ -1,6 +1,6 @@
 {
   "name": "@k4k3ru/build-html-component",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Utility for HTML component build",
   "type": "module",
   "files": ["dist"],
@@ -26,6 +26,9 @@
     "type": "git",
     "url": "git+https://github.com/k4k3ru-hub/ui-ux-design-system.git",
     "directory": "web/build/html_component"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
